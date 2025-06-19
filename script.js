@@ -1,23 +1,25 @@
 function mincost(arr) {
-  // Sort the array initially
-  arr.sort((a, b) => a - b);
+  // Helper to build a min-heap
+  const heapify = (arr) => {
+    arr.sort((a, b) => a - b);
+  };
 
+  heapify(arr);
   let totalCost = 0;
 
   while (arr.length > 1) {
-    // Take the two smallest ropes
-    let first = arr.shift();
-    let second = arr.shift();
+    let first = arr.shift();   // Remove smallest
+    let second = arr.shift();  // Remove next smallest
 
     let cost = first + second;
     totalCost += cost;
 
-    // Insert the combined rope and sort again
+    // Insert and re-heapify
     arr.push(cost);
-    arr.sort((a, b) => a - b);
+    heapify(arr);
   }
 
   return totalCost;
 }
 
-console.log(mincost[4,3,2,6])
+console.log(mincost([4, 3, 2, 6])); // Output: 29
