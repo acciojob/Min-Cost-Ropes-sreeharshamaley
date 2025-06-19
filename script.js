@@ -1,25 +1,36 @@
-function mincost(arr) {
-  // Helper to build a min-heap
-  const heapify = (arr) => {
-    arr.sort((a, b) => a - b);
-  };
-
-  heapify(arr);
+// mincost.js
+function minCost(arr) {
+  arr.sort((a, b) => a - b);
   let totalCost = 0;
 
   while (arr.length > 1) {
-    let first = arr.shift();   // Remove smallest
-    let second = arr.shift();  // Remove next smallest
-
+    let first = arr.shift();
+    let second = arr.shift();
     let cost = first + second;
     totalCost += cost;
-
-    // Insert and re-heapify
     arr.push(cost);
-    heapify(arr);
+    arr.sort((a, b) => a - b);
   }
 
   return totalCost;
 }
 
-console.log(mincost([4, 3, 2, 6])); // Output: 29
+module.exports = minCost;
+// mincost.js
+function minCost(arr) {
+  arr.sort((a, b) => a - b);
+  let totalCost = 0;
+
+  while (arr.length > 1) {
+    let first = arr.shift();
+    let second = arr.shift();
+    let cost = first + second;
+    totalCost += cost;
+    arr.push(cost);
+    arr.sort((a, b) => a - b);
+  }
+
+  return totalCost;
+}
+
+module.exports = minCost;
